@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+
+<!-- SEO REAL -->
+<title>Receitas Caseiras Saudáveis | Alimentação Simples e Natural</title>
+<meta name="description" content="Receitas caseiras saudáveis, fáceis e nutritivas. Aprenda a cozinhar bem e cuidar da sua saúde todos os dias.">
+<meta name="keywords" content="receitas saudáveis, alimentação saudável, comida caseira, saúde alimentar">
+<meta name="author" content="Receitas Caseiras & Saúde">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- OPEN GRAPH (REDES SOCIAIS) -->
+<meta property="og:title" content="Receitas Caseiras & Saúde">
+<meta property="og:description" content="Comida saudável, simples e feita em casa">
+<meta property="og:type" content="website">
+
+<!-- FAVICON (GRÁTIS) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥗</text></svg>">
+
+<style>
+:root {
+    --verde: #2ecc71;
+    --verde-escuro: #27ae60;
+    --fundo: #f6f8f7;
+    --texto: #2c3e50;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* FILTROS */
+.filtros {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.filtros button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    background: white;
+    color: var(--verde-escuro);
+    font-weight: 600;
+    transition: .3s;
+}
+
+.filtros button:hover {
+    background: var(--verde);
+    color: white;
+}
+
+/* CONTEÚDO */
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card div {
+    padding: 18px;
+}
+
+.card h3 {
+    margin: 0 0 5px;
+    color: var(--verde);
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    max-width: 520px;
+    width: 100%;
+    border-radius: 18px;
+    padding: 30px;
+}
+
+/* FOOTER */
+footer {
+    background: #1e8449;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Receitas Caseiras & Saúde</h1>
+    <p>Alimentação saudável, simples e acessível</p>
+</header>
+
+<main>
+    <div class="filtros">
+        <button onclick="filtrar('todas')">Todas</button>
+        <button onclick="filtrar('cafe')">Café</button>
+        <button onclick="filtrar('almoco')">Almoço</button>
+        <button onclick="filtrar('jantar')">Jantar</button>
+        <button onclick="filtrar('lanche')">Lanches</button>
+    </div>
+
+    <section class="cards">
+        <article class="card" data-categoria="cafe"
+            onclick="abrir('Vitamina de Banana','Banana, aveia, leite e mel. Bata tudo no liquidificador.')">
+            <img src="https://images.unsplash.com/photo-1542444459-db63c3b44c6c" alt="Vitamina de banana">
+            <div>
+                <h3>Vitamina de Banana</h3>
+                <p>Café da manhã saudável</p>
+            </div>
+        </article>
+
+        <article class="card" data-categoria="almoco"
+            onclick="abrir('Frango Grelhado','Tempere com alho, limão e grelhe até dourar.')">
+            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d" alt="Frango grelhado">
+            <div>
+                <h3>Frango Grelhado</h3>
+                <p>Almoço nutritivo</p>
+            </div>
+        </article>
+
+        <article class="card" data-categoria="jantar"
+            onclick="abrir('Sopa de Legumes','Cozinhe legumes variados e tempere com ervas.')">
+            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd" alt="Sopa de legumes">
+            <div>
+                <h3>Sopa de Legumes</h3>
+                <p>Jantar leve</p>
+            </div>
+        </article>
+    </section>
+</main>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2 id="titulo"></h2>
+        <p id="texto"></p>
+        <button onclick="modal.style.display='none'">Fechar</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Receitas Caseiras & Saúde</p>
+</footer>
+
+<script>
+function filtrar(cat) {
+    document.querySelectorAll('.card').forEach(c => {
+        c.style.display =
+            cat === 'todas' || c.dataset.categoria === cat ? 'block' : 'none';
+    });
+}
+
+function abrir(t, txt) {
+    titulo.innerText = t;
+    texto.innerText = txt;
+    modal.style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
